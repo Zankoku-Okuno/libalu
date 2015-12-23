@@ -2,7 +2,7 @@
 #include <stdbool.h>
 
 #include "uint64_t.h"
-#include "uint64_t/x64.h"
+#include "uint64_t-x64.h"
 
 
 #include <stdio.h>
