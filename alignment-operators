@@ -1,0 +1,16 @@
+alignment operators:
+
+upto:
+    * take an integer and a power-of-two alignment
+    * increment integer until it is a multiple of alignment
+
+backto:
+    * take a pointer and an alignment
+    * decrement pointer until it is a multiple of alignment
+    * useful if you are allocating blocks of data with header info at the start of the block; then any pointer into that block's data can get back to the header using this function
+
+another useful operation is hoisting malloc into an aligned malloc:
+    * allocate extra bytes equal to worst-case padding needed (alignment-1)
+    * make the malloc with that padding
+    * you'll need the original pointer around for later free
+    * malloc didn't accidentally align the pointer correctly, use align_upto to adjust the pointer
