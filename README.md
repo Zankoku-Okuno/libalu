@@ -59,12 +59,12 @@ it's so easy to let an attacker get root on your box.
 So, `size_t` overflow-checked addition and multiplication are the first things to get right.
 That way, if you're doing dynamic memory allocation, you'll have a drop-in replacement for all those size calculations you have to replace during a security audit.
 
-`{add,mul}_check_uint{8,16,32,64}`
-    [ ] portable
-    [ ] x64
-    [ ] ARM
-    [ ] x86
-`{add,mul}_check_size`
+`{add,mul}_check_uint{8,16,32,64}`:
+- [ ] portable
+- [ ] x64
+- [ ] ARM
+- [ ] x86
+`{add,mul}_check_size`:
 
 Here's a full list of what I'd like to do, moderately prioritized:
  * wrap, check overflow, carry overflow, possibly saturate
