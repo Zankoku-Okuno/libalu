@@ -51,26 +51,38 @@ The only things I'm going to make sure you do are:
 Status
 ------
 
-So far, I've only done a spike to implement `add` and `mul` for `uint64_t` in check and carry modes using gcc-style inline assembly.
-Still, that should meet a lot of use cases, but there's more to do.
+So far the only portable code is `{add,sub,mul}_check_size_t`.
+The only machine-specific code `{add,mul}_{check,carry}_uint64_t` using gcc-style inline assembly on x86-64.
+That should meet a lot of use cases, but there's plenty more to do.
 
 It's so easy to use `*` and `+` before a memory allocation:
 it's so easy to let an attacker get root on your box.
 So, `size_t` overflow-checked addition and multiplication are the first things to get right.
 That way, if you're doing dynamic memory allocation, you'll have a drop-in replacement for all those size calculations you have to replace during a security audit.
 
-`{add,mul}_check_uint{8,16,32,64}`:
+`{add,sub,mul}_check_size_t`:
+- [x] portable
+- [ ] x64
+- [ ] ARM
+- [ ] x86
+`{add,sub,mul}_check_uint{8,16,32,64}_t`:
 - [ ] portable
 - [ ] x64
 - [ ] ARM
 - [ ] x86
-`{add,mul}_check_size`:
+`{add,sub,mul}_check_int{8,16,32,64}_t`:
+- [ ] portable
+- [ ] x64
+- [ ] ARM
+- [ ] x86
+
+
 
 Here's a full list of what I'd like to do, moderately prioritized:
  * wrap, check overflow, carry overflow, possibly saturate
- * add, sub, mul, div, rem, shift/rotate, popcount, find {first,last} {set/zero} bit
- * signed/unsigned 8,16,32,64-bit, `size_t`, `uintptr_t`, `intptr_t`
- * portable (slow) implementations
+ * add, sub, mul, div, rem, divrem, shift/rotate, popcount, find {first,last} {set,zero} bit, align_upto, align_backto
+ * signed/unsigned 8,16,32,64-bit, `size_t`, `uintptr_t`, `intptr_t`, `ptrdiff_t`
+ * portable (potentially slow) implementations
  * performant operations for x64, ARM, x32, possibly others
  * optimizable operations through gcc, clang, possibly others
  * ease-of-use macros
