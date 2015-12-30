@@ -1,4 +1,4 @@
-// Requires: <stdbool.h>; (for size_t and SIZE_MAX) <stddef.h>, <stdint.h>
+// Requires: <stdbool.h>
 
 #define TVAR size_t
 #define TVAR_MAX SIZE_MAX

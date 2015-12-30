@@ -1,4 +1,4 @@
-// Requires: <stdbool.h>, <stdint.h>
+// Requires: <stdbool.h>
 
 #define TVAR uint16_t
 #define TVAR_MAX UINT16_MAX

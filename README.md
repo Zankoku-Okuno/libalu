@@ -71,7 +71,7 @@ That way, if you're doing dynamic memory allocation, you'll have a drop-in repla
 - [ ] ARM
 - [ ] x86
 `{add,sub,mul}_check_int{8,16,32,64}_t`:
-- [ ] portable
+- [x] portable
 - [ ] x64
 - [ ] ARM
 - [ ] x86
