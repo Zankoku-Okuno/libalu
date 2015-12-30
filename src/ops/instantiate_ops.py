@@ -2,12 +2,15 @@ sints = { "int8_t":  ['INT8_MIN',   'INT8_MAX']
         , "int16_t": ['1INT16_MIN', 'INT16_MAX']
         , "int32_t": ['3INT32_MIN', 'INT32_MAX']
         , "int64_t": ['6INT64_MIN', 'INT64_MAX']
+        , "intptr_t":   ['INTPTR_MIN', 'INTPTR_MAX']
+        , "ptrdiff_t":   ['PTRDIFF_MIN', 'PTRDIFF_MAX']
         }
 uints = { "uint8_t":  ['UINT8_MAX']
         , "uint16_t": ['UINT16_MAX']
         , "uint32_t": ['UINT32_MAX']
         , "uint64_t": ['UINT64_MAX']
         , "size_t":   ['SIZE_MAX']
+        , "uintptr_t":   ['UINTPTR_MAX']
         }
 
 signed_h = """// Requires: <stdbool.h>; (for size_t and SIZE_MAX) <stddef.h>, <stdint.h>

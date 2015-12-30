@@ -60,21 +60,19 @@ it's so easy to let an attacker get root on your box.
 So, `size_t` overflow-checked addition and multiplication are the first things to get right.
 That way, if you're doing dynamic memory allocation, you'll have a drop-in replacement for all those size calculations you have to replace during a security audit.
 
-`{add,sub,mul}_check_size_t`:
-- [x] portable
-- [ ] x64
-- [ ] ARM
-- [ ] x86
-`{add,sub,mul}_check_uint{8,16,32,64}_t`:
-- [x] portable
-- [ ] x64
-- [ ] ARM
-- [ ] x86
-`{add,sub,mul}_check_int{8,16,32,64}_t`:
-- [x] portable
-- [ ] x64
-- [ ] ARM
-- [ ] x86
+- [x] portable checking ops for size_t: add, sub, mul
+- [x] portable check-mode ops for uint{8,16,32,64}_t: add, sub, mul
+- [x] portable check-mode ops for int{8,16,32,64}_t: add, sub, mul
+- [x] portable check-mode ops for uintptr_t, intptr_t, ptrdiff_t: add, sub, mul
+- [ ] fast gcc check-mode ops for size_t and {,u}int{8,16,32,64}_t: mul
+- [ ] fast clang check-mode ops for size_t and {,u}int{8,16,32,64}_t: mul
+- [ ] portable div, rem, divrem operations
+- [ ] fast gcc/clang divrem
+- [ ] carry-mode: add, mul
+- [ ] logical operators (shl, shr, rot, bit test, popcount, ffs/ffz/fls/flz)
+- [ ] alignment functions (upto, backto)
+- [ ] wrapping-mode arithmetic operators
+- [ ] macros for ease-of-use
 
 
 
