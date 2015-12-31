@@ -1,1 +1,2 @@
-*.{h,i} linguist-language=C
+*.h linguist-language=C
+*.i linguist-language=C
