@@ -33,3 +33,10 @@
 
 # ASM files
 *.s
+
+# intermediate build files
+build/predithmatic.h
+build/predithmatic.c
+
+# redo files
+.redo/
