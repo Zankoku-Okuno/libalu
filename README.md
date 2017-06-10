@@ -66,9 +66,12 @@ That way, if you're doing dynamic memory allocation, you'll have a drop-in repla
 - [x] portable check-mode ops for uintptr_t, intptr_t, ptrdiff_t: add, sub, mul
 - [ ] fast gcc check-mode ops for size_t and {,u}int{8,16,32,64}_t: mul
 - [ ] fast clang check-mode ops for size_t and {,u}int{8,16,32,64}_t: mul
-- [ ] portable div, rem, divrem operations
-- [ ] fast gcc/clang divrem
-- [ ] carry-mode: add, mul
+- [x] portable div, mod, divmod operations for signed int types
+- [ ] portable div, mod, divmod operations for unsigned int types
+- [ ] negation for signed int types
+- [ ] portable quot, rem, quotrem operations
+- [ ] fast gcc/clang divmod and quotrem
+- [ ] carry-mode: add, mul, neg
 - [ ] logical operators (shl, shr, rot, bit test, popcount, ffs/ffz/fls/flz)
 - [ ] alignment functions (upto, backto)
 - [ ] wrapping-mode arithmetic operators
@@ -78,7 +81,7 @@ That way, if you're doing dynamic memory allocation, you'll have a drop-in repla
 
 Here's a full list of what I'd like to do, moderately prioritized:
  * wrap, check overflow, carry overflow, possibly saturate
- * add, sub, mul, div, rem, divrem, shift/rotate, popcount, find {first,last} {set,zero} bit, align_upto, align_backto
+ * add, sub, mul, div, rem, divmod, quotrem, shift/rotate, popcount, find {first,last} {set,zero} bit, align_upto, align_backto
  * signed/unsigned 8,16,32,64-bit, `size_t`, `uintptr_t`, `intptr_t`, `ptrdiff_t`
  * portable (potentially slow) implementations
  * performant operations for x64, ARM, x32, possibly others
