@@ -5,3 +5,4 @@ TVAR `add_check_'TVAR (TVAR a, TVAR b, bool* sticky_bit) {
     *sticky_bit |= (r < a);
     return r;
 }
+

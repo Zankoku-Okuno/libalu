@@ -10,3 +10,4 @@ TVAR `sub_check_'TVAR (TVAR a, TVAR b, bool* sticky_bit) {
         return a - b;
     }
 }
+
