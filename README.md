@@ -1,5 +1,5 @@
-libpredictmatic
-===============
+predithmatic
+============
 
 C library for predictable (no undefined behavior) arithmetic and logical operations.
 
@@ -36,14 +36,13 @@ This library targets C99, not older versions of C.
 Contributing
 ------------
 
-At this early stage, just hop in and send [pull requests](https://github.com/Zankoku-Okuno/libpredictmatic/pulls).
+At this early stage, just hop in and send [pull requests](https://github.com/Zankoku-Okuno/predithmatic/pulls).
 We can bring stuff up to coding standards after getting basic features in.
 
-I want to keep this library uniformly licensed unter the 3-clause BDS license, so those are the terms under which your pull requests will be merged.
+I want to keep this library uniformly licensed under the 3-clause BSD license, so those are the terms under which your pull requests will be merged.
 I've chosen a permissive license because I want to help all software be more secure, even comercial software, since people do need it from time-to-time.
 
 The only things I'm going to make sure you do are:
- * Use my inline macros (LIBPREDICTMATIC_INLINE) properly (should be obvious in `uint64_t.h` and related files).
  * Rob Pike's [Simple rule](http://www.lysator.liu.se/c/pikestyle.html): include files should never include include files.
  * Never drop "optional" braces in `if`, `else`, `for`, &c.
 
