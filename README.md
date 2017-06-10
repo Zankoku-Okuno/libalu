@@ -64,11 +64,11 @@ That way, if you're doing dynamic memory allocation, you'll have a drop-in repla
 - [x] portable check-mode ops for uint{8,16,32,64}_t: add, sub, mul
 - [x] portable check-mode ops for int{8,16,32,64}_t: add, sub, mul
 - [x] portable check-mode ops for uintptr_t, intptr_t, ptrdiff_t: add, sub, mul
-- [ ] fast gcc check-mode ops for size_t and {,u}int{8,16,32,64}_t: mul
-- [ ] fast clang check-mode ops for size_t and {,u}int{8,16,32,64}_t: mul
+- [ ] fast gcc check-mode ops for size_t and {,u}int{8,16,32,64}_t: add, mul
+- [ ] fast clang check-mode ops for size_t and {,u}int{8,16,32,64}_t: add, mul
 - [x] portable div, mod, divmod operations for signed int types
 - [ ] portable div, mod, divmod operations for unsigned int types
-- [ ] negation for signed int types
+- [x] negation for signed int types
 - [ ] portable quot, rem, quotrem operations
 - [ ] fast gcc/clang divmod and quotrem
 - [ ] carry-mode: add, mul, neg
