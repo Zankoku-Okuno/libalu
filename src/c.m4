@@ -1,1 +1,1 @@
-define(`INLINE', `extern')dnl
+define(`INLINE', `extern inline')dnl

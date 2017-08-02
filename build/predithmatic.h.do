@@ -2,9 +2,9 @@ redo-ifchange ../src/unsigned.in ../src/signed.in
 
 redo-ifchange mk-m4defs.sh
 redo-ifchange ../src/h.m4
-redo-ifchange
+redo-ifchange \
     ../src/structs.m4 \
-    ../src/align_uintptr_t-portable.m4 \
+    ../src/align-portable.m4 \
     ../src/*_unsigned-portable.m4 \
     ../src/*_signed-portable.m4
 
@@ -23,6 +23,5 @@ for T in `grep -v '^\s*#' ../src/signed.in | grep .`; do
         m4 >> $3
 done;
 
-./mk-m4defs.sh $T |
-    cat ../src/h.m4 - ../src/structs.m4 ../src/align_uintptr_t-portable.m4 |
+cat ../src/h.m4 ../src/align-portable.m4 |
     m4 >> $3
