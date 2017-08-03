@@ -58,7 +58,7 @@ Status
 - [ ] fast clang check-mode ops for size_t and {,u}int{8,16,32,64}_t: add, mul
 - [x] portable div, mod, divmod operations
 - [x] negation for signed int types
-- [ ] portable quot, rem, quotrem operations
+- [x] portable quot, rem, quotrem operations
 - [ ] fast gcc/clang divmod and quotrem
 - [ ] carry-mode: add, mul, neg
 - [ ] logical operators (shl, shr, rot, bit test, popcount, ffs/ffz/fls/flz)
@@ -70,7 +70,7 @@ Status
 
 Here's a full list of what I'd like to do, moderately prioritized:
  * wrap, check overflow, carry overflow, possibly saturate
- * add, sub, mul, div, rem, divmod, quotrem
+ * add, sub, mul, div, mod, divmod, quotrem, quot, rem
  * align_upto, align_backto
  * shift/rotate, popcount, find {first,last} {set,zero} bit
  * signed/unsigned 8,16,32,64-bit, `size_t`, `uintptr_t`, `intptr_t`, `ptrdiff_t`
