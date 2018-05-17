@@ -1,0 +1,12 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+inline
+@TYPE negF_@T(@TYPE a, bool* sticky_bit) {
+    if (a == @MIN) {
+        *sticky_bit |= true;
+        return a;
+    }
+    else {
+        return -a;
+    }
+}

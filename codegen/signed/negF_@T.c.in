@@ -1,0 +1,9 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "negF_@T.h"
+
+extern inline
+@TYPE negF_@T(@TYPE a, bool* sticky_bit);
+
+#include "negF_@T.inl.h"

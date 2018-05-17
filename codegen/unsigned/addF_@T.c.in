@@ -1,0 +1,9 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "addF_@T.h"
+
+extern inline
+@TYPE addF_@T(@TYPE a, @TYPE b, bool* sticky_bit);
+
+#include "addF_@T.inl.h"

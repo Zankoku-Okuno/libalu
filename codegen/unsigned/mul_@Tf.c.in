@@ -1,9 +1,0 @@
-#include <stddef.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include "mul_@Tf.h"
-
-extern inline
-@TYPE mul_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
-
-#include "mul_@Tf.inl.h"

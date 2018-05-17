@@ -1,0 +1,12 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+inline
+@TYPE mulF_@T(@TYPE a, @TYPE b, bool* sticky_bit) {
+    if (a != 0 && b > @MAX / a) {
+        *sticky_bit |= true;
+        return a;
+    }
+    else {
+        return a * b;
+    }
+}

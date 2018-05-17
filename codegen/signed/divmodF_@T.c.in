@@ -1,0 +1,15 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "divmodF_@T.h"
+
+extern inline
+struct divmod_@T divmodF_@T(@TYPE a, @TYPE b, bool* sticky_bit);
+
+extern inline
+@TYPE divF_@T(@TYPE a, @TYPE b, bool* sticky_bit);
+
+extern inline
+@TYPE modF_@T(@TYPE a, @TYPE b, bool* sticky_bit);
+
+#include "divmodF_@T.inl.h"

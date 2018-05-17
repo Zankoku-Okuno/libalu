@@ -1,0 +1,9 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "subF_@T.h"
+
+extern inline
+@TYPE subF_@T(@TYPE a, @TYPE b, bool* sticky_bit);
+
+#include "subF_@T.inl.h"

@@ -1,0 +1,4 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+inline
+@TYPE addF_@T(@TYPE a, @TYPE b, bool* sticky_bit);

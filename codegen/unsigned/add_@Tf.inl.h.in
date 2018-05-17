@@ -1,8 +1,0 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h>
-
-inline
-@TYPE add_@Tf(@TYPE a, @TYPE b, bool* sticky_bit) {
-    @TYPE r = a + b;
-    *sticky_bit |= (r < a);
-    return r;
-}

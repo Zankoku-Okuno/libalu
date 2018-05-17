@@ -1,0 +1,17 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "addF_@T.h"
+#include "subF_@T.h"
+#include "divmodF_@T.h"
+
+extern inline
+@TYPE align_uptoF_@T(@TYPE a, @TYPE to, bool* sticky_bit);
+
+extern inline
+@TYPE align_backtoF_@T(@TYPE a, @TYPE to, bool* sticky_bit);
+
+#include "addF_@T.inl.h"
+#include "subF_@T.inl.h"
+#include "divmodF_@T.inl.h"
+#include "alignF_@T.inl.h"

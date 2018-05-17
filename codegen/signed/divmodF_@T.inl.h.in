@@ -1,0 +1,37 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+inline
+struct divmod_@T divmodF_@T(@TYPE a, @TYPE b, bool* sticky_bit) {
+    struct divmod_@T r;
+    if (b == 0 || (a == @MIN && b == -1)) {
+        r.div = a;
+        r.mod = b;
+    }
+    else {
+        r.div = a / b;
+        r.mod = a % b;
+        if (r.mod < 0) {
+            if (b > 0) {
+                r.div -= 1; // unchecked sub allowed b/c `r.div` can't be `@MIN` when the only way `r.mod < 0` is if the magnitude of the divisor is at least `2`
+                r.mod += b; // unchecked add allowed b/c worst case is `b` is `1`, but `r.mod` negative
+            }
+            else if (b < 0) {
+                r.div += 1; // unchecked add allowed b/c `r.div` can't be `@MAX` when the only way `r.mod < 0` is if the magnitude of the divisor is at least `2`
+                r.mod -= b; // unchecked sub allowed b/c worst case is `b` is `-1`, but `r.mod` negative
+            }
+        }
+    }
+    return r;
+}
+
+inline
+@TYPE divF_@T(@TYPE a, @TYPE b, bool* sticky_bit) {
+    struct divmod_@T r = divmodF_@T(a, b, sticky_bit);
+    return r.div;
+}
+
+inline
+@TYPE modF_@T(@TYPE a, @TYPE b, bool* sticky_bit) {
+    struct divmod_@T r = divmodF_@T(a, b, sticky_bit);
+    return r.mod;
+}

@@ -12,14 +12,14 @@ SIGNED="i8 i16 i32 i64 iF8 iF16 iF32 iF64 iL8 iL16 iL32 iL64 ptrdiff iptr iM"
 for TYPE in $(echo ${UNSIGNED} | tr ' ' '\n'); do
     echo "Generating ${TYPE}"
     for OP in $(echo ${UARITH} | tr ' ' '\n'); do
-        ${BASEDIR}/generate.sh ${OP} ${TYPE} f
+        ${BASEDIR}/generate.sh ${OP} F ${TYPE}
     done
 done
 
 for TYPE in $(echo ${SIGNED} | tr ' ' '\n'); do
     echo "Generating ${TYPE}"
     for OP in $(echo ${ARITH} | tr ' ' '\n'); do
-        ${BASEDIR}/generate.sh ${OP} ${TYPE} f
+        ${BASEDIR}/generate.sh ${OP} F ${TYPE}
     done
 done
 
@@ -30,13 +30,13 @@ done
 for TYPE in $(echo ${UNSIGNED} | tr ' ' '\n'); do
     echo "Compiling ${TYPE}"
     for OP in $(echo ${UARITH} | tr ' ' '\n'); do
-        ${BASEDIR}/compile.sh ${BASEDIR}/src/${OP}_${TYPE}f.c
+        ${BASEDIR}/compile.sh ${BASEDIR}/src/${OP}F_${TYPE}.c
     done
 done
 
 for TYPE in $(echo ${SIGNED} | tr ' ' '\n'); do
     echo "Compiling ${TYPE}"
     for OP in $(echo ${ARITH} | tr ' ' '\n'); do
-        ${BASEDIR}/compile.sh ${BASEDIR}/src/${OP}_${TYPE}f.c
+        ${BASEDIR}/compile.sh ${BASEDIR}/src/${OP}F_${TYPE}.c
     done
 done

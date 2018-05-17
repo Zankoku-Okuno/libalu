@@ -1,0 +1,13 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+inline
+@TYPE subF_@T(@TYPE a, @TYPE b, bool* sticky_bit) {
+    if ( (b > 0 && a < @MIN + b)
+       | (b < 0 && a > @MAX + b)) {
+        *sticky_bit |= true;
+        return a;
+    }
+    else {
+        return a - b;
+    }
+}

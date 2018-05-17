@@ -1,7 +1,0 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h> "add_@Tf.h" "sub_@Tf.h" "divmod_@Tf.h"
-
-inline
-@TYPE align_upto_@Tf(@TYPE a, @TYPE to, bool* sticky_bit);
-
-inline
-@TYPE align_backto_@Tf(@TYPE a, @TYPE to, bool* sticky_bit);

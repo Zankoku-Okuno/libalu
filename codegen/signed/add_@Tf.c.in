@@ -1,9 +1,0 @@
-#include <stddef.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include "add_@Tf.h"
-
-extern inline
-@TYPE add_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
-
-#include "add_@Tf.inl.h"
