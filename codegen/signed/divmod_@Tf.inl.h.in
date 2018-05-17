@@ -1,7 +1,8 @@
 // DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
 inline
-divmod_@T divmod_@Tf(@TYPE a, @TYPE b, bool* sticky_bit) {
-    divmod_@T r;
+struct divmod_@T divmod_@Tf(@TYPE a, @TYPE b, bool* sticky_bit) {
+    struct divmod_@T r;
     if (b == 0 || (a == @MIN && b == -1)) {
         r.div = a;
         r.mod = b;

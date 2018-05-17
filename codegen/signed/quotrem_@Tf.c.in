@@ -4,7 +4,7 @@
 #include "quotrem_@Tf.h"
 
 extern inline
-quotrem_@T quotrem_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
+struct quotrem_@T quotrem_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
 
 extern inline
 @TYPE quot_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);

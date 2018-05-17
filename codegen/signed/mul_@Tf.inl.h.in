@@ -1,4 +1,5 @@
 // DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
 inline
 @TYPE mul_@Tf(@TYPE a, @TYPE b, bool* sticky_bit) {
     bool apos = a > 0;

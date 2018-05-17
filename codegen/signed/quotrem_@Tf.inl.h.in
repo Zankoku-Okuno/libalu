@@ -1,13 +1,14 @@
 // DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
 inline
-quotrem_@T quotrem_@Tf(@TYPE a, @TYPE b, bool* sticky_bit) {
+struct quotrem_@T quotrem_@Tf(@TYPE a, @TYPE b, bool* sticky_bit) {
     if (b == 0 || (a == @MIN && b == -1)) {
         *sticky_bit |= true;
-        quotrem_@T r = { .quot = a, .rem = b };
+        struct quotrem_@T r = { .quot = a, .rem = b };
         return r;
     }
     else {
-        quotrem_@T r = { .quot = a / b, .rem = a % b };
+        struct quotrem_@T r = { .quot = a / b, .rem = a % b };
         return r;
     }
 }

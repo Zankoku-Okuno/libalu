@@ -4,7 +4,7 @@
 #include "divmod_@Tf.h"
 
 extern inline
-divmod_@T divmod_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
+struct divmod_@T divmod_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
 
 extern inline
 @TYPE div_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
