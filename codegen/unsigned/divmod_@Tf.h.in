@@ -1,0 +1,12 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+// FIXME move this struct definition to a different file
+typedef struct divmod_@T {
+    @TYPE div;
+    @TYPE mod;
+} divmod_@T;
+
+divmod_@T divmod_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
+
+@TYPE div_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
+
+@TYPE mod_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);

@@ -1,0 +1,15 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "quotrem_@Tf.h"
+
+extern inline
+quotrem_@T quotrem_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
+
+extern inline
+@TYPE quot_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
+
+extern inline
+@TYPE rem_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
+
+#include "quotrem_@Tf.inl.h"

@@ -1,0 +1,12 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+// FIXME move this struct definition to a different file
+typedef struct quotrem_@T {
+    @TYPE quot;
+    @TYPE rem;
+} quotrem_@T;
+
+quotrem_@T quotrem_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
+
+@TYPE quot_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
+
+@TYPE rem_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
