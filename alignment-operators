@@ -14,3 +14,4 @@ another useful operation is hoisting malloc into an aligned malloc:
     * make the malloc with that padding
     * you'll need the original pointer around for later free
     * malloc didn't accidentally align the pointer correctly, use align_upto to adjust the pointer
+    * unfortunately, you'll need the unaligned pointer to free the memory
