@@ -1,28 +1,36 @@
 #!/bin/sh
 
-CDIR=$(dirname $0)/c-src
+BASEDIR=$(dirname $0)
+DBFILE=${BASEDIR}/types.db
+INDIR=${BASEDIR}/sed-src
+OUTDIR=${BASEDIR}/c-src
+
+OP=$1
+
+T=$2
+LOCATION=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f2)
+TYPE=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f3)
+MAX=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f4)
+MIN=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f5)
+
+MODE=$3
 
 
-T=u8 # FIXME this should be $2, and TYPE,MAX,MIN should be looked up
-TYPE=uint8_t
-MAX=UINT8_MAX
-MIN=UINT8_MIN
+untemplate() {
+    EXT=$1
+    case $EXT in
+        h)     OUTLOC=include ;;
+        inl.h) OUTLOC=include ;;
+        c)     OUTLOC=src ;;
+        *)     echo "internal error: unknown extension ${EXT} (skipping)"; return ;;
+    esac
 
-SED_T="s/@T/${T}/g"
-SED_TYPE="s/@TYPE/${TYPE}/g"
-SED_MAX="s/@MAX/${MAX}/g"
-SED_MIN="s/@MIN/${MIN}/g"
+    INFILE=${INDIR}/${LOCATION}/${OP}_@T${MODE}.${EXT}.in
+    OUTFILE=${OUTDIR}/${OUTLOC}/${OP}_${T}${MODE}.${EXT}
 
+    sed "s/@TYPE/${TYPE}/g;s/@MAX/${MAX}/g;s/@MIN/${MIN}/g;s/@T/${T}/g" <${INFILE} >${OUTFILE}
+}
 
-INFILE=${1}
-OUTFILE=$(basename ${INFILE} | sed 's/\.in$//' | sed ${SED_T})
-
-if [ $(echo ${OUTFILE} | grep '.h$') ]
-then
-    OUTFILE=${CDIR}/include/${OUTFILE}
-else
-    OUTFILE=${CDIR}/src/${OUTFILE}
-fi
-
-
-sed -e ${SED_TYPE} -e ${SED_T} -e ${SED_MAX} -e ${SED_MIN} <${INFILE} >${OUTFILE}
+untemplate 'h'
+untemplate 'inl.h'
+untemplate 'c'

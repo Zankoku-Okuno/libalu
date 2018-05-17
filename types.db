@@ -1,0 +1,54 @@
+T		LOCATION	TYPE			MAX					MIN
+-		--------	----			---					---
+
+# Unsigned Integers
+
+## Exact Size
+u8		unsigned	uint8_t			UINT8_MAX			0
+u16		unsigned	uint16_t		UINT16_MAX			0
+u32		unsigned	uint32_t		UINT32_MAX			0
+u64		unsigned	uint64_t		UINT64_MAX			0
+
+## Fastest Size
+uF8		unsigned	uint_fast8_t	UINT_FAST8_MAX		0
+uF16	unsigned	uint_fast16_t	UINT_FAST16_MAX		0
+uF32	unsigned	uint_fast32_t	UINT_FAST32_MAX		0
+uF64	unsigned	uint_fast64_t	UINT_FAST64_MAX		0
+
+## At Least Size
+uL8		unsigned	uint_least8_t	UINT_LEAST8_MAX		0
+uL16	unsigned	uint_least16_t	UINT_LEAST16_MAX	0
+uL32	unsigned	uint_least32_t	UINT_LEAST32_MAX	0
+uL64	unsigned	uint_least64_t	UINT_LEAST64_MAX	0
+
+## Miscellaneous
+uptr	unsigned	uintptr_t		UINTPTR_MAX			0
+uM		unsigned	uintmax_t		UINTMAX_MAX			0
+
+
+# Signed Integers
+
+## Exact Size
+i8		signed		int8_t			INT8_MAX			INT8_MIN
+i16		signed		int16_t			INT16_MAX			INT16_MIN
+i32		signed		int32_t			INT32_MAX			INT32_MIN
+i64		signed		int64_t			INT64_MAX			INT64_MIN
+
+## Fastest Size
+iF8		signed		int_fast8_t		INT_FAST8_MAX		INT_FAST8_MIN
+iF16	signed		int_fast16_t	INT_FAST16_MAX		INT_FAST16_MIN
+iF32	signed		int_fast32_t	INT_FAST32_MAX		INT_FAST32_MIN
+iF64	signed		int_fast64_t	INT_FAST64_MAX		INT_FAST64_MIN
+
+## At Least Size
+iL8		signed		int_least8_t	INT_LEAST8_MAX		INT_LEAST8_MIN
+iL16	signed		int_least16_t	INT_LEAST16_MAX		INT_LEAST16_MIN
+iL32	signed		int_least32_t	INT_LEAST32_MAX		INT_LEAST32_MIN
+iL64	signed		int_least64_t	INT_LEAST64_MAX		INT_LEAST64_MIN
+
+## Miscellaneous
+iptr	signed		intptr_t		INTPTR_MAX			INTPTR_MIN
+iM		signed		intmax_t		INTMAX_MAX			INTMAX_MIN
+
+## TODO C sizes
+## TODO size_t &co
