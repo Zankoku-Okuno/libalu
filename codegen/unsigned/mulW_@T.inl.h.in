@@ -1,0 +1,6 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+inline
+@TYPE mulW_@T(@TYPE a, @TYPE b) {
+    return a * b;
+}

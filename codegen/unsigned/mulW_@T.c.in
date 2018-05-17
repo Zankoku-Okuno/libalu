@@ -1,0 +1,9 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "mulW_@T.h"
+
+extern inline
+@TYPE mulW_@T(@TYPE a, @TYPE b);
+
+#include "mulW_@T.inl.h"

@@ -1,0 +1,9 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "subW_@T.h"
+
+extern inline
+@TYPE subW_@T(@TYPE a, @TYPE b);
+
+#include "subW_@T.inl.h"

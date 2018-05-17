@@ -1,0 +1,25 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+inline
+struct divmod_@T divmodW_@T(@TYPE a, @TYPE b) {
+    if (b == 0) {
+        struct divmod_@T r = { .div = a, .mod = b };
+        return r;
+    }
+    else {
+        struct divmod_@T r = { .div = a / b, .mod = a % b };
+        return r;
+    }
+}
+
+inline
+@TYPE divW_@T(@TYPE a, @TYPE b) {
+    struct divmod_@T r = divmodW_@T(a, b);
+    return r.div;
+}
+
+inline
+@TYPE modW_@T(@TYPE a, @TYPE b) {
+    struct divmod_@T r = divmodW_@T(a, b);
+    return r.mod;
+}

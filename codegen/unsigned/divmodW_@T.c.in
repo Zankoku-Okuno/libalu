@@ -1,0 +1,15 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "divmodW_@T.h"
+
+extern inline
+struct divmod_@T divmodW_@T(@TYPE a, @TYPE b);
+
+extern inline
+@TYPE divW_@T(@TYPE a, @TYPE b);
+
+extern inline
+@TYPE modW_@T(@TYPE a, @TYPE b);
+
+#include "divmodW_@T.inl.h"
