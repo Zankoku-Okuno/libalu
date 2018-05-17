@@ -34,5 +34,7 @@
 # ASM files
 *.s
 
-# redo files
-.redo/
+# Generated C Files
+include/
+src/
+
