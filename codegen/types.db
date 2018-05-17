@@ -22,6 +22,7 @@ uL32	unsigned	uint_least32_t	UINT_LEAST32_MAX	0
 uL64	unsigned	uint_least64_t	UINT_LEAST64_MAX	0
 
 ## Miscellaneous
+size	unsigned	size_t			SIZE_MAX			0
 uptr	unsigned	uintptr_t		UINTPTR_MAX			0
 uM		unsigned	uintmax_t		UINTMAX_MAX			0
 
@@ -47,8 +48,8 @@ iL32	signed		int_least32_t	INT_LEAST32_MAX		INT_LEAST32_MIN
 iL64	signed		int_least64_t	INT_LEAST64_MAX		INT_LEAST64_MIN
 
 ## Miscellaneous
+ptrdiff	signed		ptrdiff_t		PTRDIFF_MAX			PTRDIFF_MIN
 iptr	signed		intptr_t		INTPTR_MAX			INTPTR_MIN
 iM		signed		intmax_t		INTMAX_MAX			INTMAX_MIN
 
 ## TODO C sizes
-## TODO size_t &co

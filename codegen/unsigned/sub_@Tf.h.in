@@ -1,2 +1,2 @@
-// DEPS: <stdint.h> <stdbool.h>
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
 @TYPE sub_@Tf(@TYPE a, @TYPE b, bool* sticky_bit);
