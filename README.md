@@ -42,7 +42,7 @@ There are four replaced variables:
   * `@TYPE`: name of C type
   * `@MAX`: maximum possible value
   * `@MIN`: minimum possible value
-These variables are looked up using `types.db` based on the short name passed to `generate.sh`.
+These variables are looked up using `types.data` based on the short name passed to `generate.sh`.
 The database also contains a `LOCATION` column to switch templates bsed on the type.
 The database is human-readable, so check that for more detail, especially the short names.
 Note that tabs---not spaces---are used as column separators, so be sure to check your whitespace when editing the database.

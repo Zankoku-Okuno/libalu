@@ -1,7 +1,7 @@
 #!/bin/sh
 
 BASEDIR=$(dirname $0)
-DBFILE=${BASEDIR}/codegen/types.db
+DBFILE=${BASEDIR}/codegen/types.data
 INDIR=${BASEDIR}/codegen
 OUTDIR=${BASEDIR}
 
