@@ -9,28 +9,57 @@ Goals
 
 The C Standard, in the interests of portability, put lots of undefined behavior into the basic arithmetic operations.
 In addition, they've targeted the lowest-common denominator by not allowing access to parts of the hardware such as the carry flag.
-This cripples programs that care about performance, security, and portability.
-Running into these undefined behaviors is common, so it's hard to audit a code base;
-when (not if) you (hopefully not an attacker) do find the problem, you have a choice between portability and performance.
-Then, even though the solutions are well-known, it seems no one has bothered to package it up into a library, so you have to reimplement this wheel yourself.
+
+I understand the reasoning behind the committee's choice, but running into undefined behavior with normal C operators is easier than you think.
+If you need a systems language and care about any choice of two from performance, security, or portability, then plain C operators are risky business.
+The solutions to potential undefined behavior are well-known, so it's possible to audit a codebase with enough effort.
+
+This library aims to make these sorts of audits unnecessary in C.
+The operations in predithmatic are known to be portable and never perform undefined behavior.
+The structure of this library allows for platform-specific optimizations to be made in the future.
+With liberal inlining, these operations can be compiled down to run as efficiently as possible.
 
 In practice, there are only a few kinds of behavior we want to get from our arithmetic:
-wrapping, checking for overflow, and carrying overflow, each for word sizes of the form `8 * 2^n`.
-There could be a library for this; there should be a library for this; there must be a library for this.
-I couldn't find it, so it's time to fix this situation.
+wrapping, checking for overflow, and carrying overflow, each for the common C integer and unsigned integer types.
+Casting between integer types can also trigger undefined behavoir, so we treat that here.
+While we're at it, it might be convenient to have various bit-twiddling functions.
 
 
-Usage
------
+Building & Usage
+----------------
 
 This library is licensed under the 3-clause BSD license (see LICENSE file).
 
-TODO figure out build system
-
-Include the general header `<type>.h`, your choice of platform's header `<type>-<platform>.h` and their (documented at top of file) requirements anywhere you use the operations for the type.
-In case any of the operations was not inlined, compile your choice of platform's source file `<type>-<platform>.c`, and link it into your object(s).
-
 This library targets C99, not older versions of C.
+
+Many of the functions in this library are the same except for a change in types.
+To avoid repeatign so much C code, we therefore generate code for each operation using templates in `codegen`.
+The generation itself is done with `generate.sh <operation> <type (short name)> <mode>`.
+
+The templates are simple substitution templates.
+There are four replaced variables:
+  * `@T`: short name
+  * `@TYPE`: name of C type
+  * `@MAX`: maximum possible value
+  * `@MIN`: minimum possible value
+These variables are looked up using `types.db` based on the short name passed to `generate.sh`.
+The database also contains a `LOCATION` column to switch templates bsed on the type.
+The database is human-readable, so check that for more detail, especially the short names.
+Note that tabs---not spaces---are used as column separators, so be sure to check your whitespace when editing the database.
+
+Running `generate.sh` creates three files:
+  * `<op>_<type><mode>.h`: a header file with the prototype
+  * `<op>_<type><mode>.c`: a translation unit defining a symbol for the operation
+  * `<op>_<type><mode>.inl.h`: a header file giving the inline definition
+To use these operations in a C program:
+  * include the prototypes you need (and any headers they require) near the top of the file
+  * write your code
+  * include the associated inline definitions at the end of the file
+  * compile the translation units of operations your program uses
+  * link those translation units with your porogram
+
+Compiling the generated translation units is done with `compile.sh <translation unit>`.
+Additional arguments can be passed to the compiler with `$CFLAGS`.
 
 
 Contributing

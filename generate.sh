@@ -1,9 +1,9 @@
 #!/bin/sh
 
 BASEDIR=$(dirname $0)
-DBFILE=${BASEDIR}/types.db
-INDIR=${BASEDIR}/sed-src
-OUTDIR=${BASEDIR}/c-src
+DBFILE=${BASEDIR}/codegen/types.db
+INDIR=${BASEDIR}/codegen
+OUTDIR=${BASEDIR}
 
 OP=$1
 
