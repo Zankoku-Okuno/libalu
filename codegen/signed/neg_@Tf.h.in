@@ -1,0 +1,2 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+@TYPE neg_@Tf(@TYPE a, bool* sticky_bit);
