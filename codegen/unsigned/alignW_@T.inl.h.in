@@ -1,4 +1,4 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h> "addW_@T.h" "subW_@T.h" "divmod_@T.h" "divmodW_@T.h"
+// DEPS: <stddef.h> <stdint.h> "addW_@T.h" "subW_@T.h" "divmod_@T.h" "divmodW_@T.h"
 
 inline
 @TYPE align_uptoW_@T(@TYPE a, @TYPE to) {

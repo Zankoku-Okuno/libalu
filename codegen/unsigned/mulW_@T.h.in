@@ -1,4 +1,4 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+// DEPS: <stddef.h> <stdint.h>
 
 inline
 @TYPE mulW_@T(@TYPE a, @TYPE b);
