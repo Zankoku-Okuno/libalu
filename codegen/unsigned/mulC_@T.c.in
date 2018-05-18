@@ -1,9 +1,10 @@
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include "carry_@T.h"
 #include "mulC_@T.h"
 
 extern inline
-struct carry_@T mulC_@T(@TYPE a, @TYPE b);
+struct wide_@T mulC_@T(@TYPE a, @TYPE b);
 
 #include "mulC_@T.inl.h"

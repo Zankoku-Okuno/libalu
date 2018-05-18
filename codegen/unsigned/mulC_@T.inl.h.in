@@ -1,8 +1,8 @@
-// DEPS: <stddef.h> <stdint.h> "carry_@T.h"
+// DEPS: <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h"
 
 // FIXME is this right?
 inline
-struct carry_@T mulC_@T(@TYPE a, @TYPE b) {
+struct wide_@T mulC_@T(@TYPE a, @TYPE b) {
     // base is 1/2 the size of the input type
     @TYPE base = (8 * sizeof(@TYPE) / 2); // FIXME use BITS_PER_CHAR
     @TYPE lowMask = ((@TYPE)~0) >> base;
@@ -31,7 +31,7 @@ struct carry_@T mulC_@T(@TYPE a, @TYPE b) {
     @TYPE x4 = x >> base;
 
 
-    struct carry_@T r;
+    struct wide_@T r;
     // a*b = (a2*B + a1)(b2*B + b1)
     //     = a2*b2*B^2    + a1*b2*B    + a2*b1*B    + a1*b1
     //     = x*B^2        + w*B        + v*B        + u

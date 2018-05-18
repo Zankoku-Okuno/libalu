@@ -1,6 +1,11 @@
-// DEPS: <stddef.h> <stdint.h>
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+struct wide_@T {
+    @TYPE hi;
+    @TYPE lo;
+};
 
 struct carry_@T {
-    @TYPE hi;
+    bool carry;
     @TYPE lo;
 };

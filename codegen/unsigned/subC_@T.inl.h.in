@@ -1,9 +1,21 @@
-// DEPS: <stddef.h> <stdint.h> "carry_@T.h"
+// DEPS: <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h"
 
 inline
 struct carry_@T subC_@T(@TYPE a, @TYPE b) {
     struct carry_@T r;
     r.lo = a - b;
-    r.hi = (r.lo > a) ? ~0 : 0;
+    r.carry = (r.lo > a);
+    return r;
+}
+
+inline
+struct carry_@T sbbC_@T(@TYPE a, struct carry_@T b) {
+    // NOTE if noc generated a borrow, that could only be because noc.lo > a >= 0.
+    // Therefore, withc will not have its borrow set if noc does.
+    struct carry_@T noc = subC_@T(a, b.lo);
+    struct carry_@T withc = subC_@T(noc.lo, b.carry);
+    struct carry_@T r;
+    r.lo = withc.lo;
+    r.carry = noc.carry | withc.carry;
     return r;
 }

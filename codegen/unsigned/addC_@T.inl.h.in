@@ -1,9 +1,21 @@
-// DEPS: <stddef.h> <stdint.h> "carry_@T.h"
+// DEPS: <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h"
 
 inline
 struct carry_@T addC_@T(@TYPE a, @TYPE b) {
     struct carry_@T r;
     r.lo = a + b;
-    r.hi = (r.lo < a);
+    r.carry = (r.lo < a);
+    return r;
+}
+
+inline
+struct carry_@T adcC_@T(@TYPE a, struct carry_@T b) {
+    // NOTE if noc generated a carry, that must be because noc.lo < a <= @MAX.
+    // Therefore, withc will not have its carry set if noc does.
+    struct carry_@T noc = addC_@T(a, b.lo);
+    struct carry_@T withc = addC_@T(noc.lo, b.carry);
+    struct carry_@T r;
+    r.lo = withc.lo;
+    r.carry = noc.carry | withc.carry;
     return r;
 }

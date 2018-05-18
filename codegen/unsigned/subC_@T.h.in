@@ -1,4 +1,7 @@
-// DEPS: <stddef.h> <stdint.h> "carry_@T.h"
+// DEPS: <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h"
 
 inline
 struct carry_@T subC_@T(@TYPE a, @TYPE b);
+
+inline
+struct carry_@T sbbC_@T(@TYPE a, struct carry_@T b);

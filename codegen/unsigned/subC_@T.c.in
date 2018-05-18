@@ -1,9 +1,13 @@
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include "carry_@T.h"
 #include "subC_@T.h"
 
 extern inline
 struct carry_@T subC_@T(@TYPE a, @TYPE b);
+
+extern inline
+struct carry_@T sbbC_@T(@TYPE a, struct carry_@T b);
 
 #include "subC_@T.inl.h"
