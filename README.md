@@ -79,32 +79,23 @@ The only things I'm going to make sure you do are:
 Status
 ------
 
-- [x] portable checking ops for size_t: add, sub, mul
-- [x] portable check-mode ops for uint{8,16,32,64}_t: add, sub, mul
-- [x] portable check-mode ops for int{8,16,32,64}_t: add, sub, mul
-- [x] portable check-mode ops for uintptr_t, intptr_t, ptrdiff_t: add, sub, mul
-- [ ] fast gcc check-mode ops for size_t and {,u}int{8,16,32,64}_t: add, mul
-- [ ] fast clang check-mode ops for size_t and {,u}int{8,16,32,64}_t: add, mul
-- [x] portable div, mod, divmod operations
-- [x] negation for signed int types
-- [x] portable quot, rem, quotrem operations
-- [ ] fast gcc/clang divmod and quotrem
-- [ ] carry-mode: add, mul, neg
-- [ ] logical operators (shl, shr, rot, bit test, popcount, ffs/ffz/fls/flz)
-- [x] alignment functions (upto, backto)
-- [ ] wrapping-mode arithmetic operators
-- [ ] macros for ease-of-use
-
-
-
-Here's a full list of what I'd like to do, moderately prioritized:
- * wrap, check overflow, carry overflow, possibly saturate
- * add, sub, mul, div, mod, divmod, quotrem, quot, rem
- * align_upto, align_backto
- * shift/rotate, popcount, find {first,last} {set,zero} bit
- * signed/unsigned 8,16,32,64-bit, `size_t`, `uintptr_t`, `intptr_t`, `ptrdiff_t`
- * portable (potentially slow) implementations
- * performant operations for x64, ARM, x32, possibly others
- * optimizable operations through gcc, clang, possibly others
- * ease-of-use macros
-
+- [ ] portable arithmetic operations
+    - [x] unsigned add, sub, mul, divmod
+        - [x] carry, flag, wrap modes
+    - [ ] signed neg, add, sub, mul, divmod, quotrem
+        - [x] flag mode
+        - [ ] carry, wrap modes
+- [ ] portable alignment utilities
+    - [x] unsigned carry, flag, wrap modes
+    - [x] signed flag mode
+    - [ ] signed carry, wrap modes
+- [ ] machine/compiler-specific performance improvements
+    - [ ] gcc
+    - [ ] clang
+    - [ ] _investigate_: cover which machines for when compiler not recognized or compiler doesn't recognize machine
+- [ ] portable bit twiddle operators
+    - [ ] shl, shr, rot, bit test, popcount, count leading/trailing zeros/ones
+- [ ] saturating mode
+    - [ ] unsigned arithmetic
+    - [ ] signed arithmetic
+- [ ] _investigate_: macros for ease-of-use
