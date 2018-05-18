@@ -1,4 +1,4 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h> "addF_@T.h" "subF_@T.h" "divmod_@T.h" "divmodF_@T.h"
+// DEPS: <stddef.h> <stdint.h> <stdbool.h> "addF_@T.h" "divmod_@T.h" "divmodF_@T.h"
 
 inline
 @TYPE align_uptoF_@T(@TYPE a, @TYPE to, bool* sticky_bit) {
@@ -7,7 +7,7 @@ inline
         return a;
     }
     else {
-        @TYPE adjust = subF_@T(to, tmp, sticky_bit); // TODO is it necessary to use checked arith here?
+        @TYPE adjust = to - tmp; // NOTE `tmp = a % to` and so `tmp < to` and `0 < to - tmp`
         return addF_@T(a, adjust, sticky_bit);
     }
 }
@@ -15,5 +15,5 @@ inline
 inline
 @TYPE align_backtoF_@T(@TYPE a, @TYPE to, bool* sticky_bit) {
     @TYPE adjust = modF_@T(a, to, sticky_bit);
-    return subF_@T(a, adjust, sticky_bit); // TODO is it necessary to use checked arith here?
+    return to - adjust; // NOTE `adjust = a % to` and so `adjust < to` and `0 < to - adjust`
 }

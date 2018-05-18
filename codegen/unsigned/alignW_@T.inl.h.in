@@ -1,4 +1,4 @@
-// DEPS: <stddef.h> <stdint.h> "addW_@T.h" "subW_@T.h" "divmod_@T.h" "divmodW_@T.h"
+// DEPS: <stddef.h> <stdint.h> "addW_@T.h" "divmod_@T.h" "divmodW_@T.h"
 
 inline
 @TYPE align_uptoW_@T(@TYPE a, @TYPE to) {
@@ -7,13 +7,13 @@ inline
         return a;
     }
     else {
-        @TYPE adjust = subW_@T(to, tmp); // TODO is it necessary to use checked arith here?
-        return addW_@T(a, adjust);
+        @TYPE adjust = to - tmp; // NOTE `tmp = a % to` and so `tmp < to` and `0 < to - tmp`
+        return addW_@T(a, adjust); // TODO is it necessary to use checked arith here?
     }
 }
 
 inline
 @TYPE align_backtoW_@T(@TYPE a, @TYPE to) {
     @TYPE adjust = modW_@T(a, to);
-    return subW_@T(a, adjust); // TODO is it necessary to use checked arith here?
+    return to - adjust; // NOTE `adjust = a % to` and so `adjust < to` and `0 < to - adjust`
 }

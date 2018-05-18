@@ -1,9 +1,5 @@
 #include <stddef.h>
 #include <stdint.h>
-#include "addW_@T.h"
-#include "subW_@T.h"
-#include "divmod_@T.h"
-#include "divmodW_@T.h"
 
 extern inline
 @TYPE align_uptoW_@T(@TYPE a, @TYPE to);
@@ -11,7 +7,10 @@ extern inline
 extern inline
 @TYPE align_backtoW_@T(@TYPE a, @TYPE to);
 
-#include "addW_@T.inl.h"
-#include "subW_@T.inl.h"
-#include "divmodW_@T.inl.h"
+#include "addW_@T.h"
+#include "divmod_@T.h"
+#include "divmodW_@T.h"
 #include "alignW_@T.inl.h"
+
+#include "addW_@T.inl.h"
+#include "divmodW_@T.inl.h"
