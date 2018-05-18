@@ -2,13 +2,33 @@
 
 BASEDIR=$(dirname $0)
 
+UARITH="add sub mul divmod align"
+SIGNED="i8 i16 i32 i64 iF8 iF16 iF32 iF64 iL8 iL16 iL32 iL64 ptrdiff iptr iM"
+
+
+STRUCTS="carry divmod"
+SIGNED_STRUCTS=quotrem
+
 MODES="F" # Flag, Wrap TODO modes Carry, Saturate
 
-UARITH="add sub mul divmod align"
+ARITH="add sub neg mul divmod quotrem"
 UNSIGNED="u8 u16 u32 u64 uF8 uF16 uF32 uF64 uL8 uL16 uL32 uL64 size uptr uM"
 
-ARITH="add sub neg mul divmod quotrem"
-SIGNED="i8 i16 i32 i64 iF8 iF16 iF32 iF64 iL8 iL16 iL32 iL64 ptrdiff iptr iM"
+
+
+for STRUCT in $(echo "${STRUCTS}" | tr ' ' '\n'); do
+    echo "Generating struct ${STRUCT}"
+    for TYPE in $(echo "${UNSIGNED} ${SIGNED}" | tr ' ' '\n'); do
+        ${BASEDIR}/generate.sh struct ${STRUCT} ${TYPE}
+    done
+done
+
+for STRUCT in $(echo "${SIGNED_STRUCTS}" | tr ' ' '\n'); do
+    echo "Generating struct ${STRUCT}"
+    for TYPE in $(echo "${SIGNED}" | tr ' ' '\n'); do
+        ${BASEDIR}/generate.sh struct ${STRUCT} ${TYPE}
+    done
+done
 
 for MODE in $(echo "${MODES} W" | tr ' ' '\n'); do # FIXME move W mode into MODES
     for TYPE in $(echo ${UNSIGNED} | tr ' ' '\n'); do

@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "addW_@T.h"
 #include "subW_@T.h"
+#include "divmod_@T.h"
 #include "divmodW_@T.h"
 
 extern inline

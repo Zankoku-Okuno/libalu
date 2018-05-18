@@ -1,0 +1,6 @@
+// DEPS: <stddef.h> <stdint.h>
+
+struct divmod_@T {
+    @TYPE div;
+    @TYPE mod;
+};

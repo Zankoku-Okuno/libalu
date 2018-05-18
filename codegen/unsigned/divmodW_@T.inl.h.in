@@ -1,4 +1,4 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+// DEPS: <stddef.h> <stdint.h> "divmod_@T.h"
 
 inline
 struct divmod_@T divmodW_@T(@TYPE a, @TYPE b) {

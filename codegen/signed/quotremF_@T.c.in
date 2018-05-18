@@ -1,6 +1,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include "quotrem_@T.h"
 #include "quotremF_@T.h"
 
 extern inline

@@ -1,4 +1,4 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+// DEPS: <stddef.h> <stdint.h> <stdbool.h> "quotrem_@T.h"
 
 inline
 struct quotrem_@T quotremF_@T(@TYPE a, @TYPE b, bool* sticky_bit) {

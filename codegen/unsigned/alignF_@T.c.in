@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "addF_@T.h"
 #include "subF_@T.h"
+#include "divmod_@T.h"
 #include "divmodF_@T.h"
 
 extern inline

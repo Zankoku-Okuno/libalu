@@ -1,4 +1,4 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h> "addF_@T.h" "subF_@T.h" "divmodF_@T.h"
+// DEPS: <stddef.h> <stdint.h> <stdbool.h> "addF_@T.h" "subF_@T.h" "divmod_@T.h" "divmodF_@T.h"
 
 inline
 @TYPE align_uptoF_@T(@TYPE a, @TYPE to, bool* sticky_bit) {

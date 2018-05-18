@@ -1,6 +1,6 @@
 #include <stddef.h>
 #include <stdint.h>
-#include <stdbool.h>
+#include "divmod_@T.h"
 #include "divmodW_@T.h"
 
 extern inline
