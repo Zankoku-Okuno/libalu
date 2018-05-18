@@ -1,0 +1,9 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "addW_@T.h"
+
+extern inline
+@TYPE addW_@T(@TYPE a, @TYPE b);
+
+#include "addW_@T.inl.h"

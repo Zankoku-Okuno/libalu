@@ -1,0 +1,14 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+inline
+@TYPE addW_@T(@TYPE a, @TYPE b) {
+    if (b > 0 && a > @MAX - b) {
+        return (@MIN + b) - (@MAX - a + 1);
+    }
+    else if (b < 0 && a < @MIN - b) {
+        return (@MAX + b) - (@MIN - a - 1);
+    }
+    else {
+        return a + b;
+    }
+}
