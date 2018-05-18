@@ -1,0 +1,6 @@
+// DEPS: <stddef.h> <stdint.h>
+
+struct carry_@T {
+    @TYPE hi;
+    @TYPE lo;
+};

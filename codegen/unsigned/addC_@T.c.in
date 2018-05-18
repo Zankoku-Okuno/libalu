@@ -1,0 +1,9 @@
+#include <stddef.h>
+#include <stdint.h>
+#include "carry_@T.h"
+#include "addC_@T.h"
+
+extern inline
+struct carry_@T addC_@T(@TYPE a, @TYPE b);
+
+#include "addC_@T.inl.h"

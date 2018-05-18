@@ -1,4 +1,4 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+// DEPS: <stddef.h> <stdint.h> "carry_@T.h"
 
 // FIXME is this right?
 inline
@@ -37,6 +37,8 @@ struct carry_@T mulC_@T(@TYPE a, @TYPE b) {
     //     = x*B^2        + w*B        + v*B        + u
     //     = (x4*B+x3)B^2 + (w3*B+w2)B + (v3*B+v2)B + (u2*B+u1)
     //     = (x4)B^3 + (x3+w3+v3)B^2 + (w2+v2+u2)B + (u1)
+    
+    // FIXME I might need to add with carry
     r.hi = (x4 << base) + (v3 + w3 + x3);
     r.lo = ((u2 + v2 + w2) << base) + u1;
 

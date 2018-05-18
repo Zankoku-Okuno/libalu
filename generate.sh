@@ -5,15 +5,30 @@ DBFILE=${BASEDIR}/codegen/types.data
 INDIR=${BASEDIR}/codegen
 OUTDIR=${BASEDIR}
 
+# struct carry u8
+
 OP=$1
-
 MODE=$2
-
 T=$3
+
+case ${OP} in
+    struct) FILETYPE=struct ;;
+    *) FILETYPE=opcode ;;
+esac
+
 LOCATION=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f2)
 TYPE=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f3)
 MAX=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f4)
 MIN=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f5)
+
+case ${FILETYPE} in
+    opcode) ;;
+    struct)
+        LOCATION=struct
+        OP=${MODE}
+        MODE=''
+        ;;
+esac
 
 
 untemplate() {
@@ -31,6 +46,13 @@ untemplate() {
     sed "s/@TYPE/${TYPE}/g;s/@MAX/${MAX}/g;s/@MIN/${MIN}/g;s/@T/${T}/g" <${INFILE} >${OUTFILE}
 }
 
-untemplate 'h'
-untemplate 'inl.h'
-untemplate 'c'
+case ${FILETYPE} in
+    opcode)
+        untemplate 'h'
+        untemplate 'inl.h'
+        untemplate 'c'
+        ;;
+    struct)
+        untemplate 'h'
+        ;;
+esac
