@@ -1,0 +1,10 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+// FIXME move this struct definition to a different file
+struct carry_@T {
+    @TYPE hi;
+    @TYPE lo;
+};
+
+inline
+struct carry_@T mulC_@T(@TYPE a, @TYPE b);

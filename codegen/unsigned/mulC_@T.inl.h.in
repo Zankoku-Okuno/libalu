@@ -1,0 +1,44 @@
+// DEPS: <stddef.h> <stdint.h> <stdbool.h>
+
+// FIXME is this right?
+inline
+struct carry_@T mulC_@T(@TYPE a, @TYPE b) {
+    // base is 1/2 the size of the input type
+    @TYPE base = (8 * sizeof(@TYPE) / 2); // FIXME use BITS_PER_CHAR
+    @TYPE lowMask = ((@TYPE)~0) >> base;
+
+    @TYPE a1 = a & lowMask;
+    @TYPE a2 = a >> base;
+
+    @TYPE b1 = b & lowMask;
+    @TYPE b2 = b >> base;
+
+
+    @TYPE u = a1 * b1;
+    @TYPE u1 = u & lowMask;
+    @TYPE u2 = u >> base;
+
+    @TYPE v = a2 * b1;
+    @TYPE v2 = v & lowMask;
+    @TYPE v3 = v >> base;
+
+    @TYPE w = a1 * b2;
+    @TYPE w2 = w & lowMask;
+    @TYPE w3 = w >> base;
+
+    @TYPE x = a2 * b2;
+    @TYPE x3 = x & lowMask;
+    @TYPE x4 = x >> base;
+
+
+    struct carry_@T r;
+    // a*b = (a2*B + a1)(b2*B + b1)
+    //     = a2*b2*B^2    + a1*b2*B    + a2*b1*B    + a1*b1
+    //     = x*B^2        + w*B        + v*B        + u
+    //     = (x4*B+x3)B^2 + (w3*B+w2)B + (v3*B+v2)B + (u2*B+u1)
+    //     = (x4)B^3 + (x3+w3+v3)B^2 + (w2+v2+u2)B + (u1)
+    r.hi = (x4 << base) + (v3 + w3 + x3);
+    r.lo = ((u2 + v2 + w2) << base) + u1;
+
+    return r;
+}

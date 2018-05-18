@@ -1,0 +1,9 @@
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "mulC_@T.h"
+
+extern inline
+struct carry_@T mulC_@T(@TYPE a, @TYPE b);
+
+#include "mulC_@T.inl.h"
