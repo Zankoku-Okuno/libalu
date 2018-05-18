@@ -1,0 +1,22 @@
+// DEPS: <stddef.h> <stdint.h> "carry_@T.h" "addC_@T.h" "divmod_@T.h" "divmodC_@T.h"
+
+inline
+struct carry_@T align_uptoC_@T(@TYPE a, @TYPE to) {
+    @TYPE tmp = modC_@T(a, to);
+    if (tmp == 0) {
+        struct carry_@T r;
+        r.lo = a;
+        r.hi = 0;
+        return r;
+    }
+    else {
+        @TYPE adjust = to - tmp; // NOTE `tmp = a % to` and so `tmp < to` and `0 < to - tmp`
+        return addC_@T(a, adjust); // TODO is it necessary to use checked arith here?
+    }
+}
+
+inline
+@TYPE align_backtoC_@T(@TYPE a, @TYPE to) {
+    @TYPE adjust = modC_@T(a, to);
+    return to - adjust; // NOTE `adjust = a % to` and so `adjust < to` and `0 < to - adjust`
+}

@@ -10,6 +10,7 @@ STRUCTS="carry divmod"
 SIGNED_STRUCTS=quotrem
 
 MODES="F" # Flag, Wrap TODO modes Carry, Saturate
+UMODES="C F W"
 
 ARITH="add sub neg mul divmod quotrem"
 UNSIGNED="u8 u16 u32 u64 uF8 uF16 uF32 uF64 uL8 uL16 uL32 uL64 size uptr uM"
@@ -30,7 +31,7 @@ for STRUCT in $(echo "${SIGNED_STRUCTS}" | tr ' ' '\n'); do
     done
 done
 
-for MODE in $(echo "${MODES} W" | tr ' ' '\n'); do # FIXME move W mode into MODES
+for MODE in $(echo "${UMODES}" | tr ' ' '\n'); do
     for TYPE in $(echo ${UNSIGNED} | tr ' ' '\n'); do
         echo "Generating ${TYPE}"
         for OP in $(echo ${UARITH} | tr ' ' '\n'); do
@@ -52,7 +53,7 @@ done
 # ALWAYS COMPILE AFTER ALL CODE IS GENERATED
 # That way, we don't have to care if any of the compilation depends on other generated code.
 
-for MODE in $(echo "${MODES} W" | tr ' ' '\n'); do # FIXME move W mode into MODES
+for MODE in $(echo "${UMODES}" | tr ' ' '\n'); do
     for TYPE in $(echo ${UNSIGNED} | tr ' ' '\n'); do
         echo "Compiling ${TYPE}"
         for OP in $(echo ${UARITH} | tr ' ' '\n'); do

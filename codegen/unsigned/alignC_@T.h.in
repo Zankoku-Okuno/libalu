@@ -1,0 +1,8 @@
+// DEPS: <stddef.h> <stdint.h> "carry_@T.h"
+
+// FIXME if this never overflows, then just return a @TYPE
+inline
+struct carry_@T align_uptoC_@T(@TYPE a, @TYPE to);
+
+inline
+@TYPE align_backtoC_@T(@TYPE a, @TYPE to);

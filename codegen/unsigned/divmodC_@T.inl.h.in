@@ -1,0 +1,26 @@
+// DEPS: <stddef.h> <stdint.h> "divmod_@T.h"
+
+// FIXME is it corrent that div/mod can never overflow/wrap?
+inline
+struct divmod_@T divmodC_@T(@TYPE a, @TYPE b) {
+    if (b == 0) {
+        struct divmod_@T r = { .div = a, .mod = b };
+        return r;
+    }
+    else {
+        struct divmod_@T r = { .div = a / b, .mod = a % b };
+        return r;
+    }
+}
+
+inline
+@TYPE divC_@T(@TYPE a, @TYPE b) {
+    struct divmod_@T r = divmodC_@T(a, b);
+    return r.div;
+}
+
+inline
+@TYPE modC_@T(@TYPE a, @TYPE b) {
+    struct divmod_@T r = divmodC_@T(a, b);
+    return r.mod;
+}

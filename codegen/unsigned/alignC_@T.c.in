@@ -1,0 +1,17 @@
+#include <stddef.h>
+#include <stdint.h>
+#include "carry_@T.h"
+
+extern inline
+struct carry_@T align_uptoC_@T(@TYPE a, @TYPE to);
+
+extern inline
+@TYPE align_backtoC_@T(@TYPE a, @TYPE to);
+
+#include "addC_@T.h"
+#include "divmod_@T.h"
+#include "divmodC_@T.h"
+#include "alignC_@T.inl.h"
+
+#include "addC_@T.inl.h"
+#include "divmodC_@T.inl.h"
