@@ -1,10 +1,13 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h"
+// DEPS: <limits.h> <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h"
 
+#if CHAR_BITS % 2 == 0 // `CHAR_BITS` is even
 // FIXME is this right?
+// FIXME I'm not sure if `&`, `>>`, and `<<` are well-defined on unsigned integers
 inline
 struct wide_@T mulC_@T(@TYPE a, @TYPE b) {
+    // FIXME this size calculation may not be right; use some form of `popcount(@MAX)` instead (see INT35-C)
     // base is 1/2 the size of the input type
-    @TYPE base = (8 * sizeof(@TYPE) / 2); // FIXME use BITS_PER_CHAR
+    @TYPE base = (CHAR_BIT * sizeof(@TYPE) / 2);
     @TYPE lowMask = ((@TYPE)~0) >> base;
 
     @TYPE a1 = a & lowMask;
@@ -44,3 +47,7 @@ struct wide_@T mulC_@T(@TYPE a, @TYPE b) {
 
     return r;
 }
+#else
+// FIXME write the bit-by-bit algorithm for multiplication
+destroy all humans!
+#endif

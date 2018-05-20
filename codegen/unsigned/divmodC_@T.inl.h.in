@@ -1,9 +1,9 @@
 // DEPS: <stddef.h> <stdint.h> "divmod_@T.h"
 
-// FIXME is it corrent that div/mod can never overflow/wrap?
 inline
 struct divmod_@T divmodC_@T(@TYPE a, @TYPE b) {
     if (b == 0) {
+        // FIXME is this really the behavior I want for divide by zero?
         struct divmod_@T r = { .div = a, .mod = b };
         return r;
     }

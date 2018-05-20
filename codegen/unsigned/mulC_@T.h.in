@@ -1,4 +1,4 @@
-// DEPS: <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h"
+// DEPS: <limits.h> <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h"
 
 inline
 struct wide_@T mulC_@T(@TYPE a, @TYPE b);
