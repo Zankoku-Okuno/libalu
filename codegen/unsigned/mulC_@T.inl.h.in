@@ -1,9 +1,10 @@
-// DEPS: <limits.h> <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h"
+// DEPS: <limits.h> <stddef.h> <stdint.h> <stdbool.h> "carry_@T.h" "precicion.h"
 
 inline
 struct wide_@T mulC_@T(@TYPE a, @TYPE b) {
-    // FIXME this size calculation may not be right; use some form of `popcount(@MAX)` instead (see INT35-C)
-    if (sizeof(uintmax_t) >= 2 * sizeof(@TYPE)) {
+    size_t bits_max = precision_uM();
+    size_t bits_@T = precision_@T();
+    if (bits_max >= 2 * bits_@T) {
         // FIXME are all the types and casts correct here?
         size_t base = CHAR_BIT * sizeof(@TYPE);
         @TYPE mask = @MAX;
@@ -15,11 +16,9 @@ struct wide_@T mulC_@T(@TYPE a, @TYPE b) {
         return r;
     }
     // TODO use __u128 if it exists and is large enough to do the computation
-    else {
-    #if CHAR_BITS % 2 == 0 // `CHAR_BITS` is even
-        // FIXME this size calculation may not be right; use some form of `popcount(@MAX)` instead (see INT35-C)
+    else if (bits_@T % 2 == 0) {
         // base is 1/2 the size of the input type
-        @TYPE base = (CHAR_BIT * sizeof(@TYPE) / 2);
+        @TYPE base = (bits_@T / 2);
         @TYPE lowMask = ((@TYPE)~0) >> base;
 
         @TYPE a1 = a & lowMask;
@@ -60,9 +59,12 @@ struct wide_@T mulC_@T(@TYPE a, @TYPE b) {
         r.hi = (x4 << base) + (v3 + w3 + x3 + carry);
         r.lo = (lo2 << base) + u1;
         return r;
-    #else // precision is odd
+    }
+    else { // precision is odd
         // FIXME write the bit-by-bit algorithm for multiplication
-        destroy all humans!
-    #endif
+        struct wide_@T r;
+        r.hi = 0;
+        r.lo = 0;
+        return r;
     }
 }

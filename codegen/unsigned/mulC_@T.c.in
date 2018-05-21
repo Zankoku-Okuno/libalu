@@ -8,4 +8,6 @@
 extern inline
 struct wide_@T mulC_@T(@TYPE a, @TYPE b);
 
+#include "precision.h"
+#include "precision.inl.h"
 #include "mulC_@T.inl.h"

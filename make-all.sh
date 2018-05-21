@@ -51,6 +51,10 @@ for MODE in $(echo ${MODES} | tr ' ' '\n'); do
 done
 
 
+cat $(ls ${BASEDIR}/include/precision_*.h | grep -v '\.inl\.h$') > ${BASEDIR}/include/precision.h
+cat ${BASEDIR}/include/precision_*.inl.h > ${BASEDIR}/include/precision.inl.h
+
+
 # ALWAYS COMPILE AFTER ALL CODE IS GENERATED
 # That way, we don't have to care if any of the compilation depends on other generated code.
 

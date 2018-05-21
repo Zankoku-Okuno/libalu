@@ -10,4 +10,4 @@ OFILE=${OBJDIR}/$(basename ${CFILE} | sed 's/\.c$/.o/')
 DEFAULT_CFLAGS=-O2
 CFLAGS=${DEFAULT_CFLAGS} ${CFLAGS}
 
-cc -c -I${INCLUDEDIR} ${CFLAGS} -o ${OFILE} ${CFILE}
+cc -c ${CFLAGS} -I${INCLUDEDIR} -o ${OFILE} ${CFILE}
