@@ -11,7 +11,8 @@ struct carry_@T align_uptoC_@T(@TYPE a, @TYPE to) {
     }
     else {
         @TYPE adjust = to - tmp; // NOTE `tmp = a % to` and so `tmp < to` and `0 < to - tmp`
-        return addC_@T(a, adjust); // TODO is it necessary to use checked arith here?
+        return addC_@T(a, adjust); // NOTE checked arithmetic is necessary here, e.g. `align_upto_C_@T(@MAX, 8)`
+        // I thought about just wrapping (to zero), but there's `align_uptoW_@T` for that.
     }
 }
 

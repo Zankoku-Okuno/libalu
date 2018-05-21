@@ -8,7 +8,7 @@ inline
     }
     else {
         @TYPE adjust = to - tmp; // NOTE `tmp = a % to` and so `tmp < to` and `0 < to - tmp`
-        return addW_@T(a, adjust); // TODO is it necessary to use checked arith here?
+        return addW_@T(a, adjust); // NOTE checked arithmetic is necessary here, e.g. `align_upto_C_@T(@MAX, 8)`
     }
 }
 
