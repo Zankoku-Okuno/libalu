@@ -15,6 +15,19 @@ struct wide_@T mulC_@T(@TYPE a, @TYPE b) {
         r.hi = tmp & (mask << base);
         return r;
     }
+    #ifdef __GNUC__
+    else if (128 >= 2 * bits_@T) {
+        // FIXME are all the types and casts correct here?
+        size_t base = CHAR_BIT * sizeof(@TYPE);
+        @TYPE mask = @MAX;
+
+        __uint128_t tmp = (__uint128_t)a * (__uint128_t)b;
+        struct wide_@T r;
+        r.lo = tmp & mask;
+        r.hi = tmp & (mask << base);
+        return r;
+    }
+    #endif
     // TODO use __u128 if it exists and is large enough to do the computation
     else if (bits_@T % 2 == 0) {
         // base is 1/2 the size of the input type
