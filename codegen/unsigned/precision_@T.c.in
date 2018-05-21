@@ -1,0 +1,8 @@
+#include <stddef.h>
+#include <stdint.h>
+#include "precision_@T.h"
+
+extern inline
+size_t precision_@T();
+
+#include "precision_@T.inl.h"

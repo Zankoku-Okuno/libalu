@@ -1,0 +1,12 @@
+// DEPS: <stddef.h> <stdint.h>
+
+inline
+size_t precision_@T() {
+    size_t r = 0;
+    for (@TYPE a = @MAX; a != 0; a >>= 1) {
+        if (a % 2 == 1) {
+            r++;
+        }
+    }
+    return r;
+}

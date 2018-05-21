@@ -85,6 +85,9 @@ Status
     - [ ] signed neg, add, sub, mul, divmod, quotrem
         - [x] flag mode
         - [ ] carry, wrap modes
+    - [ ] precision
+        - [ ] signed
+        - [x] unsigned
 - [ ] portable alignment utilities
     - [x] unsigned carry, flag, wrap modes
     - [x] signed flag mode

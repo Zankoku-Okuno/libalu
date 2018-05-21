@@ -37,6 +37,7 @@ for MODE in $(echo "${UMODES}" | tr ' ' '\n'); do
         for OP in $(echo ${UARITH} | tr ' ' '\n'); do
             ${BASEDIR}/generate.sh ${OP} ${MODE} ${TYPE}
         done
+        ${BASEDIR}/generate.sh precision ${TYPE}
     done
 done
 
@@ -59,6 +60,7 @@ for MODE in $(echo "${UMODES}" | tr ' ' '\n'); do
         for OP in $(echo ${UARITH} | tr ' ' '\n'); do
             ${BASEDIR}/compile.sh ${BASEDIR}/src/${OP}${MODE}_${TYPE}.c
         done
+        ${BASEDIR}/compile.sh ${BASEDIR}/src/precision_${TYPE}.c
     done
 done
 

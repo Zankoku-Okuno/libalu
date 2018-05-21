@@ -1,0 +1,4 @@
+// DEPS: <stddef.h> <stdint.h>
+
+inline
+size_t precision_@T();

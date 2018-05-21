@@ -5,30 +5,35 @@ DBFILE=${BASEDIR}/codegen/types.data
 INDIR=${BASEDIR}/codegen
 OUTDIR=${BASEDIR}
 
-# struct carry u8
-
 OP=$1
 MODE=$2
 T=$3
 
 case ${OP} in
+    precision) FILETYPE=precision ;;
     struct) FILETYPE=struct ;;
     *) FILETYPE=opcode ;;
 esac
 
-LOCATION=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f2)
-TYPE=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f3)
-MAX=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f4)
-MIN=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f5)
-
 case ${FILETYPE} in
     opcode) ;;
+    precision)
+        T=${MODE}
+        MODE=''
+        ;;
     struct)
-        LOCATION=struct
         OP=${MODE}
         MODE=''
         ;;
 esac
+
+case ${FILETYPE} in
+    struct) LOCATION=struct ;;
+    *) LOCATION=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f2) ;;
+esac
+TYPE=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f3)
+MAX=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f4)
+MIN=$(sed "/^${T}/!d" ${DBFILE} | tr -s '\t' | cut -f5)
 
 
 untemplate() {
@@ -48,6 +53,11 @@ untemplate() {
 
 case ${FILETYPE} in
     opcode)
+        untemplate 'h'
+        untemplate 'inl.h'
+        untemplate 'c'
+        ;;
+    precision)
         untemplate 'h'
         untemplate 'inl.h'
         untemplate 'c'
